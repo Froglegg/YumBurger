@@ -40,8 +40,16 @@ function objToSql(ob) {
 }
 
 // Object for all our SQL statement functions.
-var orm = {
-    // create sql statement objects here, see cats example
+let orm = {
+    selectAll: function(table, cb){
+        let queryStr = `SELECT * FROM ${table};`;
+        connection.query(queryStr, function(err, result) {
+            if (err){
+                throw err;
+            }
+            cb (result);
+        });
+    }
 };
 
 // Export the orm object for the model (burgerModel.js).
