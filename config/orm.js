@@ -41,13 +41,33 @@ function objToSql(ob) {
 
 // Object for all our SQL statement functions.
 let orm = {
-    selectAll: function(table, cb){
+    selectAll: function(table, cb) {
         let queryStr = `SELECT * FROM ${table};`;
         connection.query(queryStr, function(err, result) {
-            if (err){
+            if (err) {
                 throw err;
             }
-            cb (result);
+            cb(result);
+        });
+    },
+    create: function(table, cols, vals, cb) {
+        var queryString = "INSERT INTO " + table;
+
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += printQuestionMarks(vals.length);
+        queryString += ") ";
+
+        console.log(queryString);
+
+        connection.query(queryString, vals, function(err, result) {
+            if (err) {
+                throw err;
+            }
+
+            cb(result);
         });
     }
 };
