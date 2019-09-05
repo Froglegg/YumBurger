@@ -6,7 +6,8 @@ USE burgers_db;
 CREATE TABLE burgers
 (
 	id int NOT NULL AUTO_INCREMENT,
-	name varchar(255) NOT NULL,
-	sleepy BOOLEAN DEFAULT false,
+	author varchar(255) NOT NULL,
+	chirp varchar(255) NOT NULL,
+	chirpTime datetime NOT NULL default CURRENT_TIMESTAMP,
 	PRIMARY KEY (id)
 );
