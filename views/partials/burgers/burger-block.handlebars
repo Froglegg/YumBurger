@@ -1,9 +1,10 @@
 <li>
-	{{burger_name}}
+	
 {{#if devoured}}
+{{burger_name}}
     {{else}}
-    	<button class="change-state" data-id="{{id}}" data-newstate="true">
-		eat me!
+    	<button class="change-state eat-button" data-id="{{id}}" data-newstate="true">
+		<div class="text">{{burger_name}}</div>
 	</button>
     {{/if}}
 		{{!-- <button class="delete" data-id="{{id}}">

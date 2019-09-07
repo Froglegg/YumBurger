@@ -13,5 +13,12 @@
 	</head>
 	<body>
 		{{{ body }}}
+		<script>    
+
+	let animationState = window.localStorage.getItem('disable-animations');
+    console.log(animationState);
+    if (animationState === "true") {
+        $(".main").addClass("no-animations");
+    }</script>
 	</body>
 </html>
