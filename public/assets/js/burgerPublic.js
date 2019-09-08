@@ -61,4 +61,21 @@ $(function() {
             }
         );
     });
+
+    $("#reset").on("click", function(event) {
+        console.log("clicked");
+        // Send the PUT request.
+        $.ajax("/api/burgers/", {
+            type: "DELETE"
+        }).then(
+            function() {
+                // add boolean value to local storage so page onload animations don't run again! 
+                window.localStorage.setItem('disable-animations', false);
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
+
+
 });

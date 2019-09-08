@@ -52,5 +52,17 @@ router.put("/api/burgers/:id", function(req, res) {
     });
 });
 
+router.delete("/api/burgers/", function(req, res) {
+    console.log('made it to the router in controller');
+    burger.delete("burgers", function(result) {
+        if (result.affectedRows == 0) {
+            // If no rows were changed, then the ID must not exist, so 404
+            return res.status(404).end();
+        } else {
+            return res.status(200).end();
+        }
+    });
+});
+
 // Export routes for server.js to use.
 module.exports = router;

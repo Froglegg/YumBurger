@@ -14,6 +14,10 @@
     opacity: 0;
 }
 
+.header div {
+    margin: auto;
+}
+
 .header h1 {
     margin: auto;
     color: rgb(162, 221, 255);
