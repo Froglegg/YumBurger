@@ -1,5 +1,15 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 
+// validate no empty strings
+function validate(element) {
+    var regex = /^(?!\s*$)[a-zA-Z.+\s'-]+$/;
+    if (regex.test(element)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 $(function() {
 
     $(".create-form").on("submit", function(event) {
@@ -8,22 +18,25 @@ $(function() {
 
         var newBurger = {
             burger_name: $("#ca").val().trim(),
-            // sleepy: $("[name=sleepy]:checked").val().trim()
         };
 
-        // Send the POST request.
-        $.ajax("/api/burgers", {
-            type: "POST",
-            data: newBurger
-        }).then(
-            function() {
-                console.log("created new burger");
-                // add boolean value to local storage so page onload animations don't run again! 
-                window.localStorage.setItem('disable-animations', true);
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
+        if (validate(newBurger.burger_name)) {
+            // Send the POST request.
+            $.ajax("/api/burgers", {
+                type: "POST",
+                data: newBurger
+            }).then(
+                function() {
+                    console.log("created new burger");
+                    // add boolean value to local storage so page onload animations don't run again! 
+                    window.localStorage.setItem('disable-animations', true);
+                    // Reload the page to get the updated list
+                    location.reload();
+                }
+            );
+        } else {
+            alert("Please enter a burger name before submitting.");
+        }
     });
 
     $(".change-state").on("click", function(event) {
@@ -48,6 +61,4 @@ $(function() {
             }
         );
     });
-
-
 });

@@ -3,20 +3,23 @@
     /* grid-column-gap: 2rem */
     grid-row-gap: 1rem;
     grid-template-rows: [header] 250px [body] auto;
-    grid-template-columns: [left-gutter] 1fr [leftCol] 6fr [rightCol] 6fr [sidebar] 4fr [right-gutter] 1fr;
+    grid-template-columns: [left-gutter] 1fr [leftCol] 6fr [rightCol] 6fr [sidebar] 6fr [right-gutter] 1fr;
 }
 
 .header {
     grid-row: header;
     grid-column: span 12;
     display: flex;
-    background-color: rgb(194, 194, 194);
+    background-color: rgb(43, 43, 43);
     opacity: 0;
 }
 
 .header h1 {
     margin: auto;
-    color: rgb(38, 38, 54);
+    color: rgb(162, 221, 255);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 
 .column-left {
@@ -28,6 +31,12 @@
     border-right: 2px solid #0069b3;
     opacity: 0;
     margin: 2rem;
+}
+
+.column-left h2 {
+    text-align: left;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0069b3;
 }
 
 .column-right {
@@ -42,15 +51,28 @@
     margin: 2rem;
 }
 
+.column-right h2 {
+    text-align: left;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0069b3;
+}
+
 .sidebar {
     display: flex;
     flex-direction: column;
     text-align: center;
     grid-row: body;
     grid-column: sidebar;
+    border-right: 2px solid #0069b3;
     display: flex;
     opacity: 0;
     margin: 2rem;
+}
+
+.sidebar h2 {
+    text-align: left;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0069b3;
 }
 
 .burger-item {
@@ -63,16 +85,18 @@
 }
 
 .eat-button {
+    display: inherit;
+    text-align: left;
     border-radius: 50px;
     border: 3px solid rgb(38, 38, 54);
     color: rgb(45, 49, 116);
     cursor: pointer;
     font-family: Lato, Calibri, Arial, sans-serif;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 1px;
     margin: 10px 15px 10px 15px;
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
     transition-delay: 0s;
     transition-duration: 0.3s;
     transition-timing-function: ease;
@@ -105,6 +129,21 @@ li {
 
 .form-group {
     margin-bottom: 5px;
+    text-align: left;
+}
+
+input#ca {
+    height: 35px;
+    border: 2px rgb(58, 180, 160) solid;
+    border-radius: 4px;
+}
+
+input#ca::placeholder {
+    text-align: center;
+    color: rgb(45, 49, 116);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .slide-up {
